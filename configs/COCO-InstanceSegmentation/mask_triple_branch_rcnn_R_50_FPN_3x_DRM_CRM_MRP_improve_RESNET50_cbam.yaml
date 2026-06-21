@@ -1,0 +1,16 @@
+
+_BASE_: "../Base-TripleBranchRCNN-FPN_improve_cbam.yaml"  
+MODEL:
+  RPN_ATTENTION: True  
+  WEIGHTS: "detectron2://COCO-InstanceSegmentation/mask_rcnn_R_50_FPN_3x/137849600/model_final_f10217.pkl"
+  MASK_ON: True
+  RESNETS:
+    DEPTH: 50
+  ROI_TRIPLE_BRANCH_WHOLE_MASK_HEAD: 
+    BRANCH_GUIDANCE: True
+    CONSIS_LOSS: True
+    CONSIS_LOSS_MODE: "MX"
+SOLVER:
+  STEPS: (1000, 1300)
+  MAX_ITER: 1500
+       

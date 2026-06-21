@@ -1,0 +1,17 @@
+
+_BASE_: "../Base-TripleBranchRCNN-FPN_improve_cbam.yaml"  
+MODEL:
+  RPN_ATTENTION: True  
+  WEIGHTS: " ../DoNet/configs/COCO-InstanceSegmentation/weights_R101.pkl" #(resnet101)
+  #WEIGHTS: "../DoNet/configs/COCO-InstanceSegmentation/weights_X101.pkl"
+  MASK_ON: True
+  RESNETS:
+    DEPTH: 101
+  ROI_TRIPLE_BRANCH_WHOLE_MASK_HEAD: 
+    BRANCH_GUIDANCE: True
+    CONSIS_LOSS: True
+    CONSIS_LOSS_MODE: "MX"
+SOLVER:
+  STEPS: (1000, 1300)
+  MAX_ITER: 1500
+       
